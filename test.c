@@ -3,10 +3,12 @@
 #include "./ft_isdigit.c"
 #include "./ft_isalnum.c"
 #include "./ft_isascii.c"
+#include "./ft_isprint.c"
 
 int	ft_isdigit(int d);
 int	ft_isdigit(int c);
 int	ft_isascii(int c);
+int	ft_isprint(int c);
 
 char*	cond_st(int n)
 {
@@ -15,7 +17,7 @@ char*	cond_st(int n)
 
 void test_func(char* text, char* func_name, int (*func)(int))
 {
-	char	chars[] = {'9', '0', 0x4A, 'A', 'z', '*', ' ', '}', 0x80};
+	char	chars[] = {31, '9', '0', 0x4A, 'A', 'z', '*', ' ', '}', 0x80};
 	size_t	i;
 
 	i = 0;
@@ -45,9 +47,14 @@ void	test_isascii(void) {
 	test_func("is ascii", "ft_isascii", ft_isascii);
 }
 
+void	test_isprint(void) {
+	test_func("is print", "ft_isprint", ft_isprint);
+}
+
 int	main(void)
 {
 	test_isdigit();
 	test_isalnum();
 	test_isascii();
+	test_isprint();
 }
