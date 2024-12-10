@@ -1,16 +1,19 @@
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 #include "./ft_isdigit.c"
 #include "./ft_isalnum.c"
 #include "./ft_isascii.c"
 #include "./ft_isprint.c"
 #include "./ft_strlen.c"
+#include "./ft_bzero.c"
 
-int	ft_isdigit(int d);
-int	ft_isdigit(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
-int	ft_strlen(char *s);
+int		ft_isdigit(int d);
+int		ft_isdigit(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_strlen(char *s);
+void	ft_bzero(void *s, size_t n);
 
 char*	cond_st(int n)
 {
@@ -70,6 +73,28 @@ void	test_strlen(void) {
 	printf("-----------------------\n");
 }
 
+void	test_bzero()
+{
+	char	str_bzero[7] = "ABCDEFG";
+	char	str_bzero2[7] = "ABCDEFG";
+	
+	bzero(str_bzero, 2);
+	ft_bzero(str_bzero2, 2);
+
+	printf("ft_bzero() \n-----------------------\n");
+	for(int i = 0; i < 7; i++)
+	{
+		printf("%02X ", str_bzero[i]);
+	}
+	printf(" - Original\n");
+	for(int i = 0; i < 7; i++)
+	{
+		printf("%02X ", str_bzero2[i]);
+	}
+	printf(" - Custom");
+	printf("\n-----------------------\n");
+}
+
 int	main(void)
 {
 	test_isdigit();
@@ -77,4 +102,5 @@ int	main(void)
 	test_isascii();
 	test_isprint();
 	test_strlen();
+	test_bzero();
 }
