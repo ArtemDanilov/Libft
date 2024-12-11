@@ -11,6 +11,7 @@
 #include "./ft_toupper.c"
 #include "./ft_tolower.c"
 #include "./ft_strlcpy.c"
+#include "./ft_strlcat.c"
 
 int		ft_isdigit(int d);
 int		ft_isdigit(int c);
@@ -21,6 +22,7 @@ void	ft_bzero(void *s, size_t n);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 char*	cond_st(int n)
 {
@@ -132,10 +134,10 @@ void	test_tolower(void) {
 }
 
 void	test_strlcpy(void) {
-	char	dest[5] = {0};
+	char	dest[4] = "Some";
 	char	src[] = "Destination";
 
-	char	dest2[5] = {0};
+	char	dest2[4] = "Some";
 	char	src2[] = "Destination";
 
 	printf("ft_strlcpy() \n-----------------------\n");
@@ -145,6 +147,22 @@ void	test_strlcpy(void) {
 	printf("---Custom\n");
 	printf("Length: %ld\n", ft_strlcpy(dest2, src2, 3));
 	printf("Copied 3 symbols: %s", dest2);
+	printf("\n-----------------------\n");
+}
+
+void	test_strlcat(void) {
+	char	dest[20] = "Some";
+	char	src[] = "Destination";
+
+	// char	dest2[5] = {0};
+	// char	src2[] = "Destination";
+	printf("ft_strlcat() \n-----------------------\n");
+	printf("---Original\n");
+	printf("Length: %ld\n", strlcat(dest, src, 11));
+	printf("Copied 3 symbols: %s\n", dest);
+	// printf("---Custom\n");
+	// printf("Length: %ld\n", ft_strlcat(dest2, src2, 3));
+	// printf("Copied 3 symbols: %s", dest2);
 	printf("\n-----------------------\n");
 }
 
@@ -159,4 +177,5 @@ int	main(void)
 	test_toupper();
 	test_tolower();
 	test_strlcpy();
+	test_strlcat();
 }
