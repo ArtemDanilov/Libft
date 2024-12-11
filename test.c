@@ -7,6 +7,8 @@
 #include "./ft_isprint.c"
 #include "./ft_strlen.c"
 #include "./ft_bzero.c"
+#include "./ft_toupper.c"
+#include "./ft_tolower.c"
 
 int		ft_isdigit(int d);
 int		ft_isdigit(int c);
@@ -14,6 +16,8 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_strlen(char *s);
 void	ft_bzero(void *s, size_t n);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 char*	cond_st(int n)
 {
@@ -95,6 +99,35 @@ void	test_bzero()
 	printf("\n-----------------------\n");
 }
 
+
+void	test_toupper(void) {
+	char test_uppercase[] = {'a', 'z', 'b', 'm', '4', 31, '*'};
+	int	i;
+
+	i = 0;
+	printf("ft_toupper() \n-----------------------\n");
+	while (test_uppercase[i] != 0)
+	{
+		printf("Uppercase of '%c' is %c\n", test_uppercase[i], ft_toupper(test_uppercase[i]));
+		i++;
+	}
+	printf("-----------------------\n");
+}
+
+void	test_tolower(void) {
+	char test_lowercase[] = {'A', 'Z', 'B', 'M', '4', 31, '*'};
+	int	i;
+
+	i = 0;
+	printf("ft_tolower() \n-----------------------\n");
+	while (test_lowercase[i] != 0)
+	{
+		printf("Lowercase of '%c' is %c\n", test_lowercase[i], ft_tolower(test_lowercase[i]));
+		i++;
+	}
+	printf("-----------------------\n");
+}
+
 int	main(void)
 {
 	test_isdigit();
@@ -103,4 +136,6 @@ int	main(void)
 	test_isprint();
 	test_strlen();
 	test_bzero();
+	test_toupper();
+	test_tolower();
 }
