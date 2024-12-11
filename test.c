@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <bsd/string.h>
 #include <ctype.h>
 #include "./ft_isdigit.c"
 #include "./ft_isalnum.c"
@@ -9,6 +10,7 @@
 #include "./ft_bzero.c"
 #include "./ft_toupper.c"
 #include "./ft_tolower.c"
+#include "./ft_strlcpy.c"
 
 int		ft_isdigit(int d);
 int		ft_isdigit(int c);
@@ -18,6 +20,7 @@ int		ft_strlen(char *s);
 void	ft_bzero(void *s, size_t n);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 char*	cond_st(int n)
 {
@@ -128,6 +131,23 @@ void	test_tolower(void) {
 	printf("-----------------------\n");
 }
 
+void	test_strlcpy(void) {
+	char	dest[5] = {0};
+	char	src[] = "Destination";
+
+	char	dest2[5] = {0};
+	char	src2[] = "Destination";
+
+	printf("ft_strlcpy() \n-----------------------\n");
+	printf("---Original\n");
+	printf("Length: %ld\n", strlcpy(dest, src, 3));
+	printf("Copied 3 symbols: %s\n", dest);
+	printf("---Custom\n");
+	printf("Length: %ld\n", ft_strlcpy(dest2, src2, 3));
+	printf("Copied 3 symbols: %s", dest2);
+	printf("\n-----------------------\n");
+}
+
 int	main(void)
 {
 	test_isdigit();
@@ -138,4 +158,5 @@ int	main(void)
 	test_bzero();
 	test_toupper();
 	test_tolower();
+	test_strlcpy();
 }
