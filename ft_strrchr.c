@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adanilov <adanilov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 00:22:21 by artem             #+#    #+#             */
-/*   Updated: 2024/12/13 10:06:03 by adanilov         ###   ########.fr       */
+/*   Created: 2024/12/13 12:04:56 by adanilov          #+#    #+#             */
+/*   Updated: 2024/12/13 15:03:10 by adanilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	const char	*fs;
 
-	i = 0;
-	while (s[i] != '\0')
+	fs = 0;
+	if (c == '\0')
+		return ((char *)s + ft_strlen(s));
+	while (*s)
 	{
-		i++;
+		if (*s == (char)c)
+			fs = s;
+		s++;
 	}
-	return (i);
+	return ((char *)fs);
 }

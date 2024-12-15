@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adanilov <adanilov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 00:22:21 by artem             #+#    #+#             */
-/*   Updated: 2024/12/13 10:06:03 by adanilov         ###   ########.fr       */
+/*   Created: 2024/12/05 10:54:41 by adanilov          #+#    #+#             */
+/*   Updated: 2024/12/05 12:50:57 by adanilov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	unsigned char	*str;
+	size_t			i;
 
 	i = 0;
-	while (s[i] != '\0')
+	str = (unsigned char *)s;
+	while (i < n)
 	{
+		str[i] = c;
 		i++;
 	}
-	return (i);
+	return (s);
 }

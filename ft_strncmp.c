@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adanilov <adanilov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: artem <artem@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 00:22:21 by artem             #+#    #+#             */
-/*   Updated: 2024/12/13 10:06:03 by adanilov         ###   ########.fr       */
+/*   Created: 2024/12/13 15:12:19 by adanilov          #+#    #+#             */
+/*   Updated: 2024/12/15 12:35:33 by artem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlen(const char *s)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
+	size_t		i;
 
+	if (n == 0)
+		return (0);
 	i = 0;
-	while (s[i] != '\0')
+	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
 	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
-	return (i);
+	return (0);
 }
