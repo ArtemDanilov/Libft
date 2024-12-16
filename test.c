@@ -21,6 +21,7 @@
 #include "./ft_strchr.c"
 #include "./ft_strrchr.c"
 #include "./ft_strncmp.c"
+#include "./ft_memchr.c"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int d);
@@ -39,6 +40,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
 
 char*	cond_st(int n)
 {
@@ -306,7 +308,30 @@ void test_strncmp(void)
 	printf("---Custom\n");
 	printf("Comparison of '%s' with '%s' to %ld character: %d\n", s1, s2, n, ft_strncmp(s1, s2, n));
 	printf("Comparison of '%s' with '%s' to %ld character: %d\n", s1, s2, n2, ft_strncmp(s1, s2, n2));
-	printf("\n-----------------------\n");
+	printf("-----------------------\n");
+}
+
+void	test_memchr(void)
+{
+	const char	*src;
+	char		c;
+	size_t	n;
+
+	src = "Destination";
+	c = 't';
+	n = 7;
+	const char	*ps = memchr(src, c, n);
+	const char	*ps2 = memchr(src, '\0', n);
+	const char	*ps3 = ft_memchr(src, c, n);
+	const char	*ps4 = ft_memchr(src, '\0', n);
+	printf("ft_memchr() \n-----------------------\n");
+	printf("---Original\n");
+	printf("Letter '%c' in '%s' is placed in: %ld position\n", c, src, ps - src);
+	printf("Character '\\0' in '%s' is placed in: %s position\n", src, ps2);
+	printf("---Custom\n");
+	printf("Letter '%c' in '%s' is placed in: %ld position\n", c, src, ps3 - src);
+	printf("Character '\\0' in '%s' is placed in: %s position\n", src, ps4);
+	printf("-----------------------\n");
 }
 
 int	main(void)
@@ -329,4 +354,5 @@ int	main(void)
 	test_strchr();
 	test_strrchr();
 	test_strncmp();
+	test_memchr();
 }
