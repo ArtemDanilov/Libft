@@ -22,6 +22,7 @@
 #include "./ft_strrchr.c"
 #include "./ft_strncmp.c"
 #include "./ft_memchr.c"
+#include "./ft_memcmp.c"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int d);
@@ -41,6 +42,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 char*	cond_st(int n)
 {
@@ -334,6 +336,23 @@ void	test_memchr(void)
 	printf("-----------------------\n");
 }
 
+void test_memcmp(void)
+{
+	char	*s1 = "Yepep";
+	char	*s2 = "Yepyep";
+	size_t	n = 3;
+	size_t	n2 = 5;
+
+	printf("ft_memcmp() \n-----------------------\n");
+	printf("---Original\n");
+	printf("Comparison of '%s' with '%s' to %ld character: %d\n", s1, s2, n, memcmp(s1, s2, n));
+	printf("Comparison of '%s' with '%s' to %ld character: %d\n", s1, s2, n2, memcmp(s1, s2, n2));
+	printf("---Custom\n");
+	printf("Comparison of '%s' with '%s' to %ld character: %d\n", s1, s2, n, ft_memcmp(s1, s2, n));
+	printf("Comparison of '%s' with '%s' to %ld character: %d\n", s1, s2, n2, ft_memcmp(s1, s2, n2));
+	printf("-----------------------\n");
+}
+
 int	main(void)
 {
 	printf("-----------------------\n");
@@ -355,4 +374,5 @@ int	main(void)
 	test_strrchr();
 	test_strncmp();
 	test_memchr();
+	test_memcmp();
 }
