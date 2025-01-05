@@ -2,7 +2,7 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-LIBRARY = libft.a
+NAME = libft.a
 
 FILES = atoi bzero \
 		tolower toupper \
@@ -13,15 +13,17 @@ FILES = atoi bzero \
 CFILES = $(FILES:%=ft_%.c)
 OBJ = $(FILES:%=ft_%.o)
 
-all:
+$(NAME):
 	$(CC) $(FLAGS) -c $(CFILES) -I./
-	ar -r $(LIBRARY) $(OBJ)
+	ar -r $(NAME) $(OBJ)
+
+all: $(NAME)
 
 clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(LIBRARY)
+	rm -rf $(NAME)
 
 re: fclean all
 
