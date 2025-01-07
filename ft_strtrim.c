@@ -6,21 +6,30 @@
 /*   By: artem <artem@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:50:12 by artem             #+#    #+#             */
-/*   Updated: 2025/01/05 18:50:12 by artem            ###   ########.fr       */
+/*   Updated: 2025/01/07 09:59:13 by artem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_in_set(char c, char const *set)
+int	calc_start(char const *s1, char const *set)
 {
-	while (*set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i++;
+	return (i);
+}
+
+int	calc_end(char const *s1, char const *set)
+{
+	int	i;
+
+	i = ft_strlen(s1);
+	while (s1[i - 1] && ft_strrchr(set, s1[i - 1]))
+		i--;
+	return (i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -33,14 +42,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return (NULL);
-	start = 0;
-	while (s1[start] && is_in_set(s1[start], set))
-		start++;
-	end = ft_strlen(s1);
-	while (end > start && is_in_set(s1[end - 1], set))
-		end--;
+	start = calc_start(s1, set);
+	end = calc_end(s1, set);
+	if (end < start)
+		return (ft_strdup(""));
 	len = end - start;
-	str = malloc(len * sizeof(char));
+	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -49,5 +56,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		str[i] = s1[start + i];
 		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }

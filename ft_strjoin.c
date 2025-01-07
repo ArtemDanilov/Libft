@@ -6,7 +6,7 @@
 /*   By: artem <artem@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:47:41 by artem             #+#    #+#             */
-/*   Updated: 2025/01/05 18:47:42 by artem            ###   ########.fr       */
+/*   Updated: 2025/01/07 09:58:47 by artem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char));
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -33,5 +33,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i] = *s2++;
 		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }
