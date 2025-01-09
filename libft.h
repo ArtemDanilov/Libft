@@ -6,7 +6,7 @@
 /*   By: artem <artem@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:44:40 by artem             #+#    #+#             */
-/*   Updated: 2025/01/07 09:56:16 by artem            ###   ########.fr       */
+/*   Updated: 2025/01/08 11:23:26 by artem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
+char	**ft_split(char const *s, char c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 
