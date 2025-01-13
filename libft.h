@@ -6,7 +6,7 @@
 /*   By: artem <artem@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:44:40 by artem             #+#    #+#             */
-/*   Updated: 2025/01/13 13:39:39 by artem            ###   ########.fr       */
+/*   Updated: 2025/01/13 13:39:48 by artem            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <ctype.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int d);
@@ -51,5 +57,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+t_list	*ft_lstnew(void *content);
 
 #endif
